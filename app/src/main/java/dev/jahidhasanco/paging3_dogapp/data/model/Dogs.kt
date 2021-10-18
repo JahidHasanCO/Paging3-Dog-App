@@ -8,7 +8,7 @@ import com.squareup.moshi.JsonClass
 data class Dogs(
 
     @Json(name = "breeds")
-    val breed: List<breedsItem>,
+    val breed: breedsItem,
     @Json(name = "height")
     val height: Int,
     @Json(name = "id")
