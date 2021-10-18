@@ -5,7 +5,9 @@ import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
-data class breedsItem(
+data class Breed(
+    @Json(name = "bred_for")
+    val bredFor: String,
     @Json(name = "breed_group")
     val breedGroup: String,
     @Json(name = "height")

@@ -7,7 +7,6 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import dev.jahidhasanco.paging3_dogapp.data.model.Dogs
-import dev.jahidhasanco.paging3_dogapp.data.model.breedsItem
 import dev.jahidhasanco.paging3_dogapp.databinding.EachRowBinding
 import javax.inject.Inject
 
@@ -26,11 +25,10 @@ class DogsAdapter @Inject constructor(): PagingDataAdapter<Dogs, DogsAdapter.Dog
 
 
     class DogsViewHolder(private val binding:EachRowBinding) : RecyclerView.ViewHolder(binding.root){
-        fun binds(dogs:Dogs){
+        fun binds(dogs: Dogs){
             binding.apply {
                 image.load(dogs.url)
-                name.text = dogs.breed.name
-                breedGroup.text = dogs.breed.breedGroup
+
             }
         }
     }

@@ -18,3 +18,4 @@ interface ApiService {
         @Query("limit") limit:Int
     ):List<Dogs>
 }
+
