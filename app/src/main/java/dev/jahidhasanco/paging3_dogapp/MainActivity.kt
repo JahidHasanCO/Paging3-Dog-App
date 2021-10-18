@@ -1,11 +1,15 @@
 package dev.jahidhasanco.paging3_dogapp
 
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import androidx.activity.viewModels
+import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
 import dev.jahidhasanco.paging3_dogapp.data.adapter.DogsAdapter
 import dev.jahidhasanco.paging3_dogapp.data.adapter.LoaderStateAdapter
@@ -22,10 +26,16 @@ class MainActivity : AppCompatActivity() {
     @Inject
     lateinit var dogsAdapter: DogsAdapter
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
+        }
+        window.statusBarColor = ContextCompat.getColor(this,R.color.white)
 
         initRecyclerview()
         lifecycleScope.launchWhenStarted {
@@ -43,7 +53,7 @@ class MainActivity : AppCompatActivity() {
         binding.apply {
             recyclerview.apply {
                 setHasFixedSize(true)
-                layoutManager = GridLayoutManager(this@MainActivity,2)
+                layoutManager = LinearLayoutManager(this@MainActivity)
                 adapter = dogsAdapter.withLoadStateHeaderAndFooter(
                     header = LoaderStateAdapter { dogsAdapter :: retry},
                     footer = LoaderStateAdapter{dogsAdapter :: retry}

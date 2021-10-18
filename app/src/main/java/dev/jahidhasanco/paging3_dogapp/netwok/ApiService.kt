@@ -6,6 +6,8 @@ import retrofit2.http.Query
 
 interface ApiService {
 
+    // api_key=327774f5-ffd5-47e0-974c-96953958d0b5
+
     companion object{
         const val BASE_URL = "https://api.thedogapi.com"
     }
