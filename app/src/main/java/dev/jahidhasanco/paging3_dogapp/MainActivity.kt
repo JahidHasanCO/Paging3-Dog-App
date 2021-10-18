@@ -8,8 +8,10 @@ import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
 import dev.jahidhasanco.paging3_dogapp.data.adapter.DogsAdapter
 import dev.jahidhasanco.paging3_dogapp.data.adapter.LoaderStateAdapter
@@ -53,11 +55,12 @@ class MainActivity : AppCompatActivity() {
         binding.apply {
             recyclerview.apply {
                 setHasFixedSize(true)
-                layoutManager = GridLayoutManager(this@MainActivity,2)
+                layoutManager = StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL)
                 adapter = dogsAdapter.withLoadStateHeaderAndFooter(
                     header = LoaderStateAdapter { dogsAdapter :: retry},
                     footer = LoaderStateAdapter{dogsAdapter :: retry}
                 )
+                itemAnimator = DefaultItemAnimator()
             }
         }
     }
