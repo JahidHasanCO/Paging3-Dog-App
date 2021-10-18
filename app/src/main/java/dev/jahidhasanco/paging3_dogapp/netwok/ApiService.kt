@@ -1,6 +1,7 @@
 package dev.jahidhasanco.paging3_dogapp.netwok
 
 import dev.jahidhasanco.paging3_dogapp.data.model.Dogs
+import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
 
@@ -17,5 +18,13 @@ interface ApiService {
         @Query("page") page:Int,
         @Query("limit") limit:Int
     ):List<Dogs>
+
+    @GET("v1/images/search")
+    suspend fun getLatestDogs(
+        @Query("page") page:Int,
+        @Query("limit") limit:Int
+    ):Response<Dogs>
+
+
 }
 

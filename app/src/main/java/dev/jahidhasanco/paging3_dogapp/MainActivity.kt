@@ -9,8 +9,6 @@ import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.DefaultItemAnimator
-import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
 import dev.jahidhasanco.paging3_dogapp.data.adapter.DogsAdapter
@@ -49,6 +47,7 @@ class MainActivity : AppCompatActivity() {
                 dogsAdapter.submitData(response)
             }
         }
+
     }
 
     private fun initRecyclerview() {

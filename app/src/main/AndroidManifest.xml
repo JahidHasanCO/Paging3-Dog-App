@@ -13,11 +13,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Paging3DogApp">
         <activity
-            android:name=".ui.SplashScreenActivity"
-            android:exported="true">
-
-        </activity>
-        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
